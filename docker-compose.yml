@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+    blog-server-service:
+        image: blog-server-image:v1.0.0
+        # build statement specifies the path in which the image configs are located (Dockerfile)
+        # it will be used in case of the image for the container doesn't exist
+        # relative path (".") on building starts from the project root ("/")
+        build: .
+        container_name: blog-server-container
+        restart: always
+        ports:
+            - 8000:8000
+        volumes: 
+            - .:/usr/app
