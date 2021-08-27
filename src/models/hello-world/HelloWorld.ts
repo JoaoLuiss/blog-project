@@ -3,7 +3,7 @@ import { json } from "express"
 export class Test {
     
     message: string = "Hello World!"
-    from: string = "express"
+    from: string = "express server"
 
     constructor() {
         this.method;

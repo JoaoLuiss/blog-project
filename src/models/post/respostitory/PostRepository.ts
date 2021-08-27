@@ -1,9 +1,10 @@
 
-import { Post } from './Post'
+import { Post } from '../entitie/Post'
 import { Repository, getRepository } from 'typeorm'
 import { singleton } from 'tsyringe'
+import { IPostRepository } from '../InterfacesPost'
 
-export class PostRepository {
+export class PostRepository implements IPostRepository {
 
     private postRepository: Repository<Post>
 

@@ -1,10 +1,25 @@
 version: "3.7"
 services:
+
+    blog-database-service:
+        image: postgres
+        container_name: blog-database-container
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_USER=docker
+            - POSTGRES_PASSWORD=blagablog
+            - POSTGRES_DB=blogdatabase
+        volumes: 
+            - pgdata:/data/postgres
+
     blog-server-service:
         image: blog-server-image:v1.0.0
-        # build statement specifies the path in which the image configs are located (Dockerfile)
-        # it will be used in case of the image for the container doesn't exist
-        # relative path (".") on building starts from the project root ("/")
+        # The build statement specifies the path in which the image configs are located (Dockerfile).
+        # It will be used in case of the image for the container doesn't exist.
+        # Relative path (".") on building starts from the project root ("/").
+        # It means that the Dockerfile will be in the root of the project.
         build: .
         container_name: blog-server-container
         restart: always
@@ -12,3 +27,10 @@ services:
             - 8000:8000
         volumes: 
             - .:/usr/app
+        depends_on: 
+            - blog-database-service
+
+volumes:
+    pgdata:
+        driver: local
+

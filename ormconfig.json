@@ -1,0 +1,13 @@
+{
+    "type": "postgres",
+    "port": 5432,
+    "host": "localhost", 
+    "username": "docker",
+    "password": "blagablog",
+    "database": "blogdatabase", 
+    "migrations": ["./src/database/migrations/*.ts"],
+    "entities": ["./src/models/**/entitie/*.ts"],
+    "cli": {
+      "migrationsDir": "./src/database/migrations"
+    }
+  }

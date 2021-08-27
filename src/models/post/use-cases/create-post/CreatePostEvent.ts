@@ -1,14 +1,14 @@
-import { Post } from "./Post";
-import { PostRepository } from "./PostRepository";
-import { AppError } from '@src/errors/AppError'
-import { inject, injectable } from 'tsyringe'
+import { Post } from "../../entitie/Post";
+import { AppError } from '@src/errors/AppError';
+import { inject, injectable } from 'tsyringe';
+import { IPostRepository } from "../../InterfacesPost";
 
 @injectable()
 export class CreatePostEvent {
 
     constructor(
         @inject("PostRepository")
-        private postRepository: PostRepository) 
+        private postRepository: IPostRepository) 
     {}
 
     async execute( { title, textBody } ):Promise<Post> {

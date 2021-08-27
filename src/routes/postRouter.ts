@@ -1,12 +1,10 @@
-import { CreatePostController } from '@src/models/post/CreatePostController';
+import { CreatePostController } from '@models/post/use-cases/create-post/CreatePostController';
 import Router from 'express';
 
 const postRouter = Router()
 
-// const createPostController = new CreatePostController('Hello World!')
+const createPostController = new CreatePostController()
 
-// console.log("Hello Router")
-
-// postRouter.post('/', createPostController.handle)
+postRouter.post('/', createPostController.handle)
 
 export { postRouter }
